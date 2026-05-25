@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Batch Detail | Pharma GMP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-left">
+                <a href="/" class="back-link">← Dashboard</a>
+                <h1>Batch: <span id="batchId">{{ batch_id }}</span></h1>
+            </div>
+        </header>
+
+        <section class="batch-detail">
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <h3>📋 Batch Information</h3>
+                    <div id="batchInfo">Loading...</div>
+                </div>
+                <div class="detail-card">
+                    <h3>🔍 Process Parameters</h3>
+                    <div id="paramList">Loading...</div>
+                </div>
+                <div class="detail-card">
+                    <h3>⚠️ Deviations & CAPA</h3>
+                    <div id="deviationList">Loading...</div>
+                </div>
+                <div class="detail-card">
+                    <h3>📜 Audit Trail</h3>
+                    <div id="auditList">Loading...</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="action-bar">
+            <button class="btn btn-primary" onclick="validateBatch()">✅ Validate GMP</button>
+            <button class="btn btn-secondary" onclick="viewCOA()">📄 View COA</button>
+            <button class="btn btn-secondary" onclick="viewEBR()">📑 View EBR</button>
+            <button class="btn btn-danger" onclick="qaRelease('Rejected')">❌ Reject</button>
+            <button class="btn btn-success" onclick="qaRelease('Approved')">✅ Approve</button>
+        </section>
+    </div>
+    <script>
+        const BATCH_ID = "{{ batch_id }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/batch.js') }}"></script>
+</body>
+</html>

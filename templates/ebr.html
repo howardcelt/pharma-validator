@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electronic Batch Record | Pharma GMP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <a href="/" class="back-link">← Dashboard</a>
+            <h1>Electronic Batch Record</h1>
+        </header>
+        <section class="ebr-section">
+            <div id="ebrContent">Loading EBR...</div>
+        </section>
+    </div>
+    <script>const BATCH_ID = "{{ batch_id }}";</script>
+    <script src="{{ url_for('static', filename='js/ebr.js') }}"></script>
+</body>
+</html>

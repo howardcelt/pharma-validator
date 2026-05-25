@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharma GMP Validator | Batch Compliance Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">💊</div>
+                <div>
+                    <h1>Pharma GMP Validator</h1>
+                    <p class="subtitle">21 CFR Part 11 | Electronic Batch Records | GMP Compliance</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="badge gmp">GMP v2.0</div>
+                <div class="time" id="clock">--:--:--</div>
+            </div>
+        </header>
+
+        <!-- STATS CARDS -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📦</div>
+                <div class="stat-value" id="statTotal">0</div>
+                <div class="stat-label">Total Batches</div>
+            </div>
+            <div class="stat-card success">
+                <div class="stat-icon">✅</div>
+                <div class="stat-value" id="statApproved">0</div>
+                <div class="stat-label">Approved</div>
+            </div>
+            <div class="stat-card danger">
+                <div class="stat-icon">❌</div>
+                <div class="stat-value" id="statRejected">0</div>
+                <div class="stat-label">Rejected</div>
+            </div>
+            <div class="stat-card warning">
+                <div class="stat-icon">⚠️</div>
+                <div class="stat-value" id="statDeviations">0</div>
+                <div class="stat-label">Open Deviations</div>
+            </div>
+            <div class="stat-card info">
+                <div class="stat-icon">📊</div>
+                <div class="stat-value" id="statCompliance">0%</div>
+                <div class="stat-label">Compliance Rate</div>
+            </div>
+        </section>
+
+        <!-- ACTIONS -->
+        <section class="action-bar">
+            <button class="btn btn-primary" onclick="createBatch()">➕ New Batch</button>
+            <button class="btn btn-secondary" onclick="generateDemo()">🎲 Generate Demo Data</button>
+            <button class="btn btn-secondary" onclick="loadBatches()">🔄 Refresh</button>
+        </section>
+
+        <!-- BATCH TABLE -->
+        <section class="table-section">
+            <h3>📋 Active Batches</h3>
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Batch ID</th>
+                            <th>Product</th>
+                            <th>Strength</th>
+                            <th>Stage</th>
+                            <th>Status</th>
+                            <th>Deviations</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="batchTableBody">
+                        <tr class="empty"><td colspan="8">No batches found. Create one or generate demo data.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- COMPLIANCE CHART -->
+        <section class="charts-row">
+            <div class="chart-box">
+                <h3>Batch Status Distribution</h3>
+                <canvas id="statusChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <h3>Compliance Trend</h3>
+                <canvas id="complianceChart"></canvas>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>Pharma GMP Validator v2.0 | 21 CFR Part 11 Compliant | ICH Q7 | EU GMP Annex 11</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compliance Reports | Pharma GMP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <a href="/" class="back-link">← Dashboard</a>
+            <h1>Compliance Reports Center</h1>
+        </header>
+        <section class="reports-section">
+            <div id="reportsList">Loading reports...</div>
+        </section>
+    </div>
+    <script src="{{ url_for('static', filename='js/reports.js') }}"></script>
+</body>
+</html>
